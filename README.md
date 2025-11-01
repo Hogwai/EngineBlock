@@ -1,42 +1,57 @@
 # PureTechBlock
 
-Ce script pour Tampermonkey supprime les annonces sur [lacentrale.fr](https://www.lacentrale.fr) contenant les mots-clés "PURETECH", "VTI" ou "THP", ainsi quelques publicités (conteneurs `.lcui-AdPlaceholder` et `.appNexusPlaceholder`).
+French: [README](/README_fr.md)
 
-## Prérequis
-- Un navigateur web compatible (Google Chrome, Firefox, Edge, etc.).
-- L'extension **Tampermonkey** installée.
+This script for Tampermonkey removes ads on [lacentrale.fr](https://www.lacentrale.fr) containing the keywords “PURETECH,” “VTI,” or “THP,” as well as some other ads (`.lcui-AdPlaceholder` and `.appNexusPlaceholder` containers).
 
-## Installation de Tampermonkey
-   - **Google Chrome** : Se rendre sur  [Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?pli=1) et cliquez sur "Ajouter à Chrome".
-   - **Firefox** : Se rendre sur [Mozilla Add-ons](https://addons.mozilla.org/fr/firefox/addon/tampermonkey/) et cliquez sur "Ajouter à Firefox".
-   - **Autres navigateurs** : Cherchez "Tampermonkey" dans le store d'extensions de votre navigateur (Edge, Opera, etc.).
+You can add specifiy engines by adding elements in the `VEHICLE_KEYWORDS` array:
 
-## Installation du script PureTechBlock
-1. **Depuis Greasyfork :**
-    - Se rendre sur la page du script: [PureTechBlock](https://greasyfork.org/fr/scripts/545906-puretechblock) 
-    - Cliquer sur "Installer ce script" et confirmer
-2. **Depuis Github :**
-   - Cliquer ici: [PureTechBlock.user.js](https://github.com/Hogwai/PureTechBlock/raw/refs/heads/main/PureTechBlock.user.js) et confimer.
-3. **Vérifiez que le script est activé :**
-   - Dans le tableau de bord de Tampermonkey (cliquez sur l'icône > "Tableau de bord"), assurez-vous que le script `PureTechBlock` est activé (interrupteur sur "On").
+```javascript
+const VEHICLE_KEYWORDS = ['PURETECH', 'VTI', 'THP', 'TFSI', 'DCI'];
+```
 
-## Utilisation
-- Visitez [lacentrale.fr](https://www.lacentrale.fr) ou [lacentrale.fr](https://lacentrale.fr).
-- Le script s'exécute automatiquement et supprime :
-  - Les annonces de véhicules contenant "PURETECH", "VTI" ou "THP".
-  - Les publicités frontales (`.lcui-AdPlaceholder`) et intermédiaires (`.appNexusPlaceholder`).
-- Ouvrez la console du navigateur (`F12` > Console) pour voir les logs (par exemple, combien d'annonces ou publicités ont été supprimées).
+## Prerequisites
 
-## Dépannage
-- **Le script ne fonctionne pas ?**
-  - Vérifiez que Tampermonkey est activé et que le script est correctement installé.
-  - Assurez-vous que l'URL du site correspond aux motifs `@match` du script (`https://lacentrale.fr/*` ou `https://www.lacentrale.fr/*`).
-  - Consultez la console du navigateur pour des messages d'erreur.
-- **Problèmes persistants ?**
-  - Contactez l'auteur via [GitHub](https://github.com/Hogwai/PureTechBlock/) ou mettez à jour le script.
+- A compatible web browser (Google Chrome, Firefox, Edge, etc.).
+- The **Tampermonkey** extension installed.
 
-## Auteur
+## Installing Tampermonkey
+
+- **Google Chrome**: Go to the  [Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?pli=1) and click “Add to Chrome.”
+- **Firefox**: Go to [Mozilla Add-ons](https://addons.mozilla.org/fr/firefox/addon/tampermonkey/) and click “Add to Firefox.”
+- **Other browsers**: Search for “Tampermonkey” in your browser's extension store (Edge, Opera, etc.).
+
+## Installing the PureTechBlock script
+
+1. **From Greasyfork:**
+    - Go to the script page: [PureTechBlock](https://greasyfork.org/fr/scripts/545906-puretechblock)
+    - Click on “Install this script” and confirm
+2. **From Github:**
+   - Click here: [PureTechBlock.user.js](https://github.com/Hogwai/PureTechBlock/raw/refs/heads/main/PureTechBlock.user.js) and confirm.
+3. **Check that the script is enabled:**
+   - In the Tampermonkey dashboard (click on the icon > “Dashboard”), make sure that the `PureTechBlock` script is enabled (switch set to “On”).
+
+## Usage
+
+- Visit [lacentrale.fr](https://www.lacentrale.fr) or [lacentrale.fr](https://lacentrale.fr).
+- The script runs automatically and removes:
+- Vehicle ads containing “PURETECH,” “VTI,” or “THP.”
+- Front-page ads (`.lcui-AdPlaceholder`) and intermediate ads (`.appNexusPlaceholder`).
+- Open the browser console (`F12` > Console) to view the logs (e.g., how many ads or advertisements have been removed).
+
+## Troubleshooting
+
+- **The script isn't working?**
+  - Check that Tampermonkey is enabled and that the script is installed correctly.
+  - Make sure the site URL matches the script's `@match` patterns (`https://lacentrale.fr/*` or `https://www.lacentrale.fr/*`).
+  - Check the browser console for error messages.
+- **Persistent issues?**
+  - Contact the author via [GitHub](https://github.com/Hogwai/PureTechBlock/) or update the script.
+
+## Author
+
 - **Hogwai** - [GitHub](https://github.com/Hogwai)
 
-## Licence
-Ce projet est sous licence libre. Consultez le dépôt GitHub pour plus de détails.
+## License
+
+This project is licensed under MIT license
