@@ -1,17 +1,13 @@
 // ==UserScript==
-// @name            PureTechBlock
-// @namespace       https://github.com/Hogwai/PureTechBlock/
-// @version         1.1
-// @description:en  Remove cards on lacentrale.fr containing a vehicle "PURETECH", "VTI" ou "THP", and also ads containers (.lcui-AdPlaceholder, appNexusPlaceholder
-// @description:fr  Enlève les annonces sur lacentrale.fr contenant un véhicle "PURETECH", "VTI" ou "THP", ainsi que les conteneurs de publicités (.lcui-AdPlaceholder, appNexusPlaceholder)
+// @name            EngineBlock
+// @namespace       https://github.com/Hogwai/EngineBlock/
+// @version         1.1.0
+// @description:en  Remove vehicles cards on lacentrale.fr containing vehicles with specified engines and also ads containers
+// @description:fr  Enlève les annonces sur lacentrale.fr contenant les véhicules avec des motorisations spécifiques, ainsi que les conteneurs de publicités
 // @author          Hogwai
+// @description     Remove vehicles cards on lacentrale.fr containing vehicles with specified engines and also ads containers
 // @match           https://lacentrale.fr/*
 // @match           https://www.lacentrale.fr/*
-// @grant           GM_setValue
-// @grant           GM_getValue
-// @license         MIT
-// @downloadURL     https://update.greasyfork.org/scripts/545906/PureTechBlock.user.js
-// @updateURL       https://update.greasyfork.org/scripts/545906/PureTechBlock.meta.js
 // ==/UserScript==
 
 (function () {
@@ -23,7 +19,8 @@
         '.lcui-AdPlaceholder',
         '#pavePubDesktop',
         '.appNexusPlaceholder',
-        '#pavePubGallery'
+        '#pavePubGallery',
+        'div.advertising-container'
     ];
 
     function scanAndClean() {
@@ -31,7 +28,7 @@
         const adContainers = document.querySelectorAll(AD_SELECTORS.join(', '));
         adContainers.forEach(ad => {
             ad.remove();
-            console.log(`[PureTechBlock] Ad removed : ${ad.className || ad.id}`);
+            console.debug(`[EngineBlock] Ad removed : ${ad.className || ad.id}`);
         });
 
         const vehicleCards = document.querySelectorAll('.searchCard:not([data-ptb-processed])');
@@ -44,13 +41,13 @@
                 if (VEHICLE_KEYWORDS.some(keyword => textContent.includes(keyword))) {
                     card.remove();
                     removedCount++;
-                    console.log(`[PureTechBlock] Card removed : ${textContent.trim()}`);
+                    console.debug(`[EngineBlock] Card removed : ${textContent.trim()}`);
                 }
             }
         });
 
         if (removedCount > 0) {
-            console.log(`[PureTechBlock] Total of ${removedCount} elements removed.`);
+            console.debug(`[EngineBlock] Total of ${removedCount} elements removed.`);
         }
     }
 
