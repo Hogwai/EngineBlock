@@ -6,6 +6,7 @@
 // @description:fr  Enlève les annonces sur lacentrale.fr contenant les véhicules avec des motorisations spécifiques, ainsi que les conteneurs de publicités
 // @author          Hogwai
 // @description     Remove vehicles cards on lacentrale.fr containing vehicles with specified engines and also ads containers
+// @license         MIT
 // @match           https://lacentrale.fr/*
 // @match           https://www.lacentrale.fr/*
 // ==/UserScript==
