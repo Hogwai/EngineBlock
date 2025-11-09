@@ -1,6 +1,6 @@
-# PureTechBlock
+# EngineBlock
 
-Ce script pour Tampermonkey supprime les annonces sur [lacentrale.fr](https://www.lacentrale.fr) contenant les mots-clés "PURETECH", "VTI" ou "THP", ainsi quelques publicités (conteneurs `.lcui-AdPlaceholder` et `.appNexusPlaceholder`).
+Ce script pour Tampermonkey supprime les annonces sur [lacentrale.fr](https://www.lacentrale.fr) contenant les mots-clés "PURETECH", "VTI" ou "THP", ainsi que des publicités.
 
 Vous pouvez ajouter des motorisations spécifiques en ajoutant des éléments dans le tableau `VEHICLE_KEYWORDS` :
 
@@ -19,15 +19,15 @@ const VEHICLE_KEYWORDS = ['PURETECH', 'VTI', 'THP', 'TFSI', 'DCI'];
 - **Firefox** : Se rendre sur [Mozilla Add-ons](https://addons.mozilla.org/fr/firefox/addon/tampermonkey/) et cliquez sur "Ajouter à Firefox".
 - **Autres navigateurs** : Cherchez "Tampermonkey" dans le store d'extensions de votre navigateur (Edge, Opera, etc.).
 
-## Installation du script PureTechBlock
+## Installation du script EngineBlock
 
 1. **Depuis Greasyfork :**
-    - Se rendre sur la page du script: [PureTechBlock](https://greasyfork.org/fr/scripts/545906-puretechblock)
+    - Se rendre sur la page du script: [EngineBlock](https://greasyfork.org/fr/scripts/555260-engineblock)
     - Cliquer sur "Installer ce script" et confirmer
 2. **Depuis Github :**
-   - Cliquer ici: [PureTechBlock.user.js](https://github.com/Hogwai/PureTechBlock/raw/refs/heads/main/PureTechBlock.user.js) et confimer.
+   - Cliquer ici: [EngineBlock.user.js](https://github.com/Hogwai/EngineBlock/raw/refs/heads/main/EngineBlock.user.js) et confimer.
 3. **Vérifiez que le script est activé :**
-   - Dans le tableau de bord de Tampermonkey (cliquez sur l'icône > "Tableau de bord"), assurez-vous que le script `PureTechBlock` est activé (interrupteur sur "On").
+   - Dans le tableau de bord de Tampermonkey (cliquez sur l'icône > "Tableau de bord"), assurez-vous que le script `EngineBlock` est activé (interrupteur sur "On").
 
 ## Utilisation
 
@@ -44,7 +44,7 @@ const VEHICLE_KEYWORDS = ['PURETECH', 'VTI', 'THP', 'TFSI', 'DCI'];
   - Assurez-vous que l'URL du site correspond aux motifs `@match` du script (`https://lacentrale.fr/*` ou `https://www.lacentrale.fr/*`).
   - Consultez la console du navigateur pour des messages d'erreur.
 - **Problèmes persistants ?**
-  - Contactez l'auteur via [GitHub](https://github.com/Hogwai/PureTechBlock/) ou mettez à jour le script.
+  - Contactez l'auteur via [GitHub](https://github.com/Hogwai/EngineBlock/) ou mettez à jour le script.
 
 ## Auteur
 
