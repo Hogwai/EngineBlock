@@ -1,0 +1,872 @@
+/* EngineBlock Popup Styles
+   Color scheme:
+   - Primary:          #FF6600
+   - Header gradient:  linear-gradient(135deg, #FF6600 0%, #CC5200 100%)
+   - Hover:            #CC5200
+   - Active:           #993D00
+   - Light accent:     #FFF3E6
+   - Text:             #1a1a1a
+   - Muted text:       #666666
+   - Border:           #e0e0e0
+*/
+
+/* ─── Reset & Base ─────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+    background: #ffffff;
+    min-width: 320px;
+    max-width: 350px;
+    width: 340px;
+    overflow-x: hidden;
+}
+
+a {
+    color: #FF6600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #CC5200;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+/* ─── Skeleton loading animation ──────────────────────────────────────── */
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: skeleton-shimmer 1.5s infinite;
+    border-radius: 3px;
+    color: transparent !important;
+    user-select: none;
+    pointer-events: none;
+}
+
+.skeleton * {
+    visibility: hidden;
+}
+
+/* ─── Header ───────────────────────────────────────────────────────────── */
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #FF6600 0%, #CC5200 100%);
+    color: white;
+    user-select: none;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+}
+
+.header-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.settings-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: background 0.15s ease;
+    opacity: 0.9;
+}
+
+.settings-btn:hover {
+    background: rgba(255,255,255,0.2);
+    opacity: 1;
+}
+
+.settings-btn:active {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ─── Disabled Banner ──────────────────────────────────────────────────── */
+
+.disabled-banner {
+    background: #fff3e6;
+    border-left: 3px solid #FF6600;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #993D00;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.disabled-banner[hidden] {
+    display: none;
+}
+
+/* ─── Review Banner ────────────────────────────────────────────────────── */
+
+.review-banner {
+    background: #FFF3E6;
+    border-bottom: 1px solid #ffd6b3;
+    padding: 10px 14px;
+}
+
+.review-banner[hidden] {
+    display: none;
+}
+
+.review-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.review-banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.review-banner-text strong {
+    font-size: 13px;
+    color: #993D00;
+}
+
+.review-banner-text span {
+    font-size: 12px;
+    color: #CC5200;
+}
+
+.review-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.review-btn {
+    background: #FF6600;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s ease;
+}
+
+.review-btn:hover {
+    background: #CC5200;
+    color: white;
+    text-decoration: none;
+}
+
+.review-dismiss {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 12px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: color 0.15s ease;
+}
+
+.review-dismiss:hover {
+    color: #555;
+}
+
+/* ─── Main Body ─────────────────────────────────────────────────────────── */
+
+.popup-body {
+    padding: 0;
+}
+
+/* ─── Section dividers ──────────────────────────────────────────────────── */
+
+section {
+    border-bottom: 1px solid #ebebeb;
+    padding: 10px 14px;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* ─── Stats Section ─────────────────────────────────────────────────────── */
+
+.stats-section {
+    background: #fafafa;
+    padding: 10px 14px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 0;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #444;
+    font-weight: 500;
+}
+
+.stat-counts {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #1a1a1a;
+}
+
+.stat-counts span[id] {
+    font-weight: 700;
+    color: #FF6600;
+    min-width: 18px;
+    text-align: right;
+}
+
+.stat-sep {
+    font-size: 11px;
+    color: #999;
+    font-weight: 400;
+}
+
+/* ─── Toggles Section ───────────────────────────────────────────────────── */
+
+.toggles-section {
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    padding: 3px 0;
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: #1a1a1a;
+}
+
+/* ─── Custom Checkbox ───────────────────────────────────────────────────── */
+
+.custom-checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: #FF6600;
+    border-color: #FF6600;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input[type="checkbox"]:focus-visible + .checkmark {
+    outline: 2px solid #FF6600;
+    outline-offset: 2px;
+}
+
+.toggle-row:hover .checkmark {
+    border-color: #FF6600;
+}
+
+/* ─── Keyword Section ───────────────────────────────────────────────────── */
+
+.keyword-section {
+    padding: 10px 14px;
+}
+
+.keyword-input-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.keyword-input-row input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: white;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    min-width: 0;
+}
+
+.keyword-input-row input::placeholder {
+    color: #aaa;
+}
+
+.keyword-input-row input:focus {
+    border-color: #FF6600;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,102,0,0.12);
+}
+
+.keyword-input-row button {
+    background: #FF6600;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+}
+
+.keyword-input-row button:hover {
+    background: #CC5200;
+}
+
+.keyword-input-row button:active {
+    background: #993D00;
+}
+
+#keywordList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px 0;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+#keywordList:empty {
+    margin-bottom: 0;
+}
+
+#keywordList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 8px;
+    background: #f5f5f5;
+    margin: 3px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    border: 1px solid transparent;
+    transition: border-color 0.1s ease, background 0.1s ease;
+}
+
+#keywordList li:hover {
+    background: #FFF3E6;
+    border-color: #ffd6b3;
+}
+
+#keywordList li .remove-keyword {
+    cursor: pointer;
+    color: #cc0000;
+    font-weight: 700;
+    background: none;
+    border: none;
+    font-size: 16px;
+    padding: 0 4px;
+    line-height: 1;
+    border-radius: 3px;
+    transition: color 0.1s ease, background 0.1s ease;
+}
+
+#keywordList li .remove-keyword:hover {
+    color: #990000;
+    background: rgba(204,0,0,0.08);
+}
+
+/* Scrollbar styling for keyword list */
+#keywordList::-webkit-scrollbar {
+    width: 4px;
+}
+
+#keywordList::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 2px;
+}
+
+#keywordList::-webkit-scrollbar-thumb {
+    background: #FF6600;
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+.reset-btn {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    width: 100%;
+    font-family: inherit;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.reset-btn:hover {
+    border-color: #FF6600;
+    color: #FF6600;
+}
+
+.reset-btn:active {
+    border-color: #CC5200;
+    color: #CC5200;
+}
+
+/* ─── Scan Section ──────────────────────────────────────────────────────── */
+
+.scan-section {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scan-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(135deg, #FF6600 0%, #CC5200 100%);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    width: 100%;
+    transition: opacity 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 6px rgba(255,102,0,0.3);
+}
+
+.scan-btn:hover {
+    opacity: 0.92;
+    box-shadow: 0 3px 10px rgba(255,102,0,0.4);
+}
+
+.scan-btn:active {
+    opacity: 0.85;
+    box-shadow: 0 1px 4px rgba(255,102,0,0.2);
+    transform: translateY(1px);
+}
+
+.scan-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #888;
+    padding: 0 2px;
+}
+
+.status-label {
+    color: #aaa;
+}
+
+.status-value {
+    color: #555;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.status-value.scanning {
+    color: #FF6600;
+}
+
+.status-value.done {
+    color: #2e7d32;
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+
+.popup-footer {
+    padding: 8px 14px;
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    background: #fafafa;
+    border-top: 1px solid #ebebeb;
+}
+
+.popup-footer a {
+    color: #FF6600;
+    font-weight: 600;
+}
+
+.popup-footer a:hover {
+    color: #CC5200;
+    text-decoration: underline;
+}
+
+/* ─── Settings Modal ────────────────────────────────────────────────────── */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 12px;
+    animation: overlay-in 0.15s ease;
+}
+
+.modal-overlay[hidden] {
+    display: none;
+}
+
+@keyframes overlay-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    width: 100%;
+    max-width: 310px;
+    overflow: hidden;
+    animation: modal-in 0.18s ease;
+}
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 12px;
+    background: linear-gradient(135deg, #FF6600 0%, #CC5200 100%);
+    color: white;
+}
+
+.modal-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+    transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.modal-close:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.2);
+}
+
+.modal-body {
+    padding: 4px 0;
+}
+
+.settings-row {
+    padding: 8px 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.settings-row:last-child {
+    border-bottom: none;
+}
+
+/* ─── Reset Counters Button ─────────────────────────────────────────────── */
+
+.reset-counters-btn {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #555;
+    width: 100%;
+    font-family: inherit;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.reset-counters-btn:hover {
+    border-color: #FF6600;
+    color: #FF6600;
+}
+
+.reset-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #555;
+    flex-wrap: wrap;
+}
+
+.reset-confirm[hidden] {
+    display: none;
+}
+
+.confirm-yes {
+    background: #FF6600;
+    color: white;
+    border: none;
+    padding: 4px 14px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    transition: background 0.15s ease;
+}
+
+.confirm-yes:hover {
+    background: #CC5200;
+}
+
+.confirm-no {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+    font-family: inherit;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.confirm-no:hover {
+    border-color: #999;
+    color: #333;
+}
+
+/* ─── Support Section ───────────────────────────────────────────────────── */
+
+.support-section {
+    padding: 4px 16px 8px;
+}
+
+.support-toggle {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #555;
+    font-family: inherit;
+    padding: 4px 0;
+    width: 100%;
+    text-align: left;
+    transition: color 0.15s ease;
+}
+
+.support-toggle:hover {
+    color: #FF6600;
+}
+
+.support-chevron {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.support-toggle[aria-expanded="true"] .support-chevron {
+    transform: rotate(180deg);
+}
+
+.support-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 0 2px 2px;
+}
+
+.support-content[hidden] {
+    display: none;
+}
+
+.support-link {
+    font-size: 13px;
+    color: #FF6600;
+    padding: 3px 0;
+    display: inline-block;
+}
+
+.support-link:hover {
+    color: #CC5200;
+    text-decoration: underline;
+}
+
+/* ─── Tab mode (Firefox Android) ───────────────────────────────────────── */
+
+.tab-mode body {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
+
+.tab-mode .popup-header {
+    border-radius: 0;
+}
+
+.tab-mode .modal {
+    max-width: 480px;
+}
+
+.tab-mode #keywordList {
+    max-height: 200px;
+}
+
+/* ─── Saved indicator ───────────────────────────────────────────────────── */
+
+.saved-indicator {
+    font-size: 11px;
+    color: #2e7d32;
+    padding: 2px 6px;
+    background: #e8f5e9;
+    border-radius: 4px;
+    display: inline-block;
+    animation: fade-in-out 2s ease forwards;
+}
+
+@keyframes fade-in-out {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ─── Scrollbar (global) ────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF6600;
+}

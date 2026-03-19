@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EngineBlock</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="popup-header">
+        <div class="header-logo">
+            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+                <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+            <span class="header-title" data-i18n="popupTitle">EngineBlock</span>
+        </div>
+        <button class="settings-btn" id="openSettings" aria-label="Settings">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Disabled banner -->
+    <div class="disabled-banner" id="disabledBanner" hidden>
+        <span data-i18n="extensionDisabled">Extension is disabled</span>
+    </div>
+
+    <!-- Review banner -->
+    <div class="review-banner" id="reviewBanner" hidden>
+        <div class="review-banner-content">
+            <div class="review-banner-text">
+                <strong data-i18n="reviewTitle">Enjoying EngineBlock?</strong>
+                <span data-i18n="reviewMessage">Leave us a review!</span>
+            </div>
+            <div class="review-banner-actions">
+                <a class="review-btn" id="reviewLink" href="https://addons.mozilla.org/firefox/addon/engineblock/" target="_blank" data-i18n="reviewButton">Review</a>
+                <button class="review-dismiss" id="dismissReview" data-i18n="dismissReview">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="popup-body">
+
+        <!-- Counter section -->
+        <section class="stats-section">
+            <div class="stat-row">
+                <span class="stat-label" data-i18n="keywordsBlocked">Keywords blocked</span>
+                <span class="stat-counts">
+                    <span id="keywordsSessionCount">0</span>
+                    <span class="stat-sep" data-i18n="session">session</span>
+                    /
+                    <span id="keywordsTotalCount">0</span>
+                    <span class="stat-sep" data-i18n="total">total</span>
+                </span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label" data-i18n="adsBlocked">Ads blocked</span>
+                <span class="stat-counts">
+                    <span id="adsSessionCount">0</span>
+                    <span class="stat-sep" data-i18n="session">session</span>
+                    /
+                    <span id="adsTotalCount">0</span>
+                    <span class="stat-sep" data-i18n="total">total</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- Filter toggles -->
+        <section class="toggles-section">
+            <label class="toggle-row" for="filterKeywords">
+                <span class="custom-checkbox">
+                    <input type="checkbox" id="filterKeywords" checked>
+                    <span class="checkmark"></span>
+                </span>
+                <span class="toggle-label" data-i18n="filterKeywords">Engine keywords</span>
+            </label>
+            <label class="toggle-row" for="filterAds">
+                <span class="custom-checkbox">
+                    <input type="checkbox" id="filterAds" checked>
+                    <span class="checkmark"></span>
+                </span>
+                <span class="toggle-label" data-i18n="filterAds">Ads</span>
+            </label>
+        </section>
+
+        <!-- Keyword management -->
+        <section class="keyword-section">
+            <div class="keyword-input-row">
+                <input type="text" id="keywordInput" data-i18n-placeholder="keywordPlaceholder" placeholder="e.g. HYBRID, E-208, 1.2L">
+                <button id="addKeywordBtn" data-i18n="addKeyword">Add</button>
+            </div>
+            <ul id="keywordList"></ul>
+            <button id="resetKeywordsBtn" class="reset-btn" data-i18n="resetDefaults">Reset default values</button>
+        </section>
+
+        <!-- Scan section -->
+        <section class="scan-section">
+            <button class="scan-btn" id="scanNowBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span data-i18n="scanNow">Scan now</span>
+            </button>
+            <div class="status-row">
+                <span class="status-label">Status:</span>
+                <span class="status-value" id="statusText" data-i18n="statusReady">Ready</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+        <span data-i18n="madeBy">Made by</span>
+        <a href="https://github.com/Hogwai/EngineBlock" target="_blank">Hogwai</a>
+    </footer>
+
+    <!-- Settings modal -->
+    <div class="modal-overlay" id="settingsOverlay" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+            <div class="modal-header">
+                <h2 class="modal-title" id="settingsModalTitle" data-i18n="settingsTitle">Settings</h2>
+                <button class="modal-close" id="closeSettings" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Extension enable toggle -->
+                <div class="settings-row">
+                    <label class="toggle-row" for="enabledToggle">
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="enabledToggle" checked>
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="toggle-label" data-i18n="enabled">Extension enabled</span>
+                    </label>
+                </div>
+
+                <!-- Logging toggle -->
+                <div class="settings-row">
+                    <label class="toggle-row" for="loggingToggle">
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="loggingToggle">
+                            <span class="checkmark"></span>
+                        </span>
+                        <span class="toggle-label" data-i18n="logging">Enable logging</span>
+                    </label>
+                </div>
+
+                <!-- Reset counters -->
+                <div class="settings-row">
+                    <button class="reset-counters-btn" id="resetCountersBtn" data-i18n="resetCounters">Reset counters</button>
+                    <div class="reset-confirm" id="resetConfirm" hidden>
+                        <span data-i18n="resetCountersConfirm">Are you sure?</span>
+                        <button class="confirm-yes" id="confirmReset" data-i18n="yes">Yes</button>
+                        <button class="confirm-no" id="cancelReset" data-i18n="no">No</button>
+                    </div>
+                </div>
+
+                <!-- Support section -->
+                <div class="settings-row support-section">
+                    <button class="support-toggle" id="supportToggle" aria-expanded="false">
+                        <span data-i18n="support">Support</span>
+                        <svg class="support-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="support-content" id="supportContent" hidden>
+                        <a class="support-link" href="https://github.com/Hogwai/EngineBlock" target="_blank" data-i18n="githubLink">GitHub</a>
+                        <a class="support-link" href="https://addons.mozilla.org/firefox/addon/engineblock/" target="_blank" data-i18n="feedbackLink">Feedback</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

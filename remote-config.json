@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "selectors": {
+        "card": ".searchCard",
+        "subtitle": "div[class*=\"vehiclecardV2_subTitle__\"]",
+        "feedWrapper": "div[class*=\"searchResults\"]",
+        "ads": [
+            ".lcui-AdPlaceholder",
+            "#pavePubDesktop",
+            ".appNexusPlaceholder",
+            "#pavePubGallery",
+            "div.advertising-container"
+        ]
+    }
+}
