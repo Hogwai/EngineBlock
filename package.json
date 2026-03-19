@@ -1,0 +1,21 @@
+{
+  "name": "engineblock",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Remove vehicles cards on lacentrale.fr containing vehicles with specified engines and also ads containers",
+  "scripts": {
+    "build": "node build.js",
+    "build:chrome": "node build.js --target=chrome",
+    "build:firefox": "node build.js --target=firefox",
+    "build:userscript": "node build.js --target=userscript",
+    "build:all": "node build.js --target=all --no-version",
+    "clean": "rm -rf dist"
+  },
+  "author": "Hogwai",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^4.59.0",
+    "rollup-plugin-copy": "^3.5.0"
+  }
+}

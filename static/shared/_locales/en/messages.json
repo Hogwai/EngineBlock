@@ -1,0 +1,8 @@
+{
+    "extName": {
+        "message": "EngineBlock"
+    },
+    "extDescription": {
+        "message": "Remove vehicle listings with specified engines and ads on lacentrale.fr"
+    }
+}
